@@ -1,0 +1,98 @@
+import random
+import telebot
+bot = telebot.TeleBot('2076263058:AAH8mn5MFoOCgjm_U-bN6oN3cW5qQ0DFPQY')
+from telebot import types
+
+@bot.message_handler(content_types=['text'])
+def get_text_messages(message):
+   
+    if message.text == "Мем":
+    
+        bot.send_message(message.from_user.id, "Привет, это МемБот, выбери мем и тебе он откроется")
+
+        keyboard = types.InlineKeyboardMarkup()
+   
+        key_oven = types.InlineKeyboardButton(text='Океееей летс гоу', callback_data='з')
+   
+        keyboard.add(key_oven)
+        key_telec = types.InlineKeyboardButton(text='Корова танцует под польскую музыку', callback_data='а')
+        keyboard.add(key_telec)
+        key_bliznecy = types.InlineKeyboardButton(text='Пожалуй, хватит на сегодня интернета', callback_data='б')
+        keyboard.add(key_bliznecy)
+        key_rak = types.InlineKeyboardButton(text='Гачимучи', callback_data='в')
+        keyboard.add(key_rak)
+        key_lev = types.InlineKeyboardButton(text='Ломай, ломай, мы же миллионеры', callback_data='г')
+        keyboard.add(key_lev)
+        key_deva = types.InlineKeyboardButton(text='ёжик чихнул', callback_data='д')
+        keyboard.add(key_deva)
+        key_vesy = types.InlineKeyboardButton(text='Скала Джонсон', callback_data='е')
+        keyboard.add(key_vesy)
+        key_scorpion = types.InlineKeyboardButton(text='Мама звонит', callback_data='ё')
+        keyboard.add(key_scorpion)
+        key_strelec = types.InlineKeyboardButton(text='Да ты че', callback_data='ж')
+        keyboard.add(key_strelec)
+        key_kozerog = types.InlineKeyboardButton(text='Вот это прикол', callback_data='э')
+        keyboard.add(key_kozerog)
+        key_vodoley = types.InlineKeyboardButton(text='Больно в ноге', callback_data='и')
+        keyboard.add(key_vodoley)
+        key_ryby = types.InlineKeyboardButton(text='Повар спрашивает повара', callback_data='й')
+        keyboard.add(key_ryby)
+       
+        bot.send_message(message.from_user.id, text='Выбери свой любимый мем', reply_markup=keyboard)
+    elif message.text == "/help":
+        bot.send_message(message.from_user.id, "Напиши Мем")
+    else:
+        bot.send_message(message.from_user.id, "Я тебя не понимаю. Напиши /help.")
+
+@bot.callback_query_handler(func=lambda call: True)
+def callback_worker(call):
+   
+    if call.data == "а": 
+        msg = "https://youtu.be/Y1s_WAxNCCw"
+        bot.send_message(call.message.chat.id, msg)
+
+    if call.data == "з": 
+        msg = "https://youtu.be/FW9_poTNVDo"
+        bot.send_message(call.message.chat.id, msg)
+    
+    if call.data == "б": 
+        msg = "https://youtu.be/8LfOQ3hINdE"
+        bot.send_message(call.message.chat.id, msg)
+    
+    if call.data == "в": 
+        msg = "https://youtu.be/AIQZ_3xWosc"
+        bot.send_message(call.message.chat.id, msg)
+    
+    if call.data == "г": 
+        msg = "https://youtu.be/xCO7knWpI3s"
+        bot.send_message(call.message.chat.id, msg)
+    
+    if call.data == "д": 
+        msg = "https://youtu.be/EIUln-ovry8"
+        bot.send_message(call.message.chat.id, msg)
+   
+    if call.data == "е": 
+        msg = "https://youtu.be/dr1SvX0gBVQ"
+        bot.send_message(call.message.chat.id, msg)
+    
+    if call.data == "ё": 
+        msg = "https://youtu.be/yqgDgVbdtoA"
+        bot.send_message(call.message.chat.id, msg)
+    
+    if call.data == "ж": 
+        msg = "https://youtu.be/P8fovVJ17GE"
+        bot.send_message(call.message.chat.id, msg)
+    
+    if call.data == "э": 
+        msg = "https://youtu.be/WACsPXKOOTU"
+        bot.send_message(call.message.chat.id, msg)
+    
+    if call.data == "и": 
+        msg = "https://youtu.be/8yxl_WvwN38"
+        bot.send_message(call.message.chat.id, msg)
+    
+    if call.data == "й": 
+        msg = "https://youtu.be/JyD13ifbAN4"
+        bot.send_message(call.message.chat.id, msg)
+
+bot.polling(none_stop=True, interval=0)
